@@ -89,6 +89,19 @@
     
     
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const envelope = document.querySelector(".envelope-box");
+    const audio = document.getElementById("bg-audio");
+
+    if (envelope && audio) {
+        envelope.addEventListener("click", () => {
+            // Unlocks and plays audio on mobile browsers upon user interaction
+            audio.play().catch(error => {
+                console.log("Audio playback behavior blocked or handled:", error);
+            });
+        });
+    }
+});
         const envelopeBox = document.getElementById('envelopeBox');
         const videoBox = document.getElementById('videoBox');
         const invitationVideo = document.getElementById('invitationVideo');
