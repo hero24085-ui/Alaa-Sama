@@ -6,8 +6,9 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    overflow-y: hidden; /* Prevent scrolling until envelope is clicked */
+    overflow-y: scroll; /* Allows scrolling on mobile once opened */
     font-family: 'Arial', sans-serif;
+    width: 100%;
 }
 
 .lobster-regular {
@@ -102,7 +103,7 @@ body {
 
 @keyframes flash-sequence {
     0% { opacity: 0; }
-    30% { opacity: 1; } /* Peak white brightness */
+    30% { opacity: 1; } 
     100% { opacity: 0; }
 }
 
@@ -124,6 +125,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    margin: 0 auto;
 }
 
 /* Envelope Box Setup */
@@ -165,7 +167,7 @@ body {
 
 /* Video Box Setup */
 .video-box {
-    display: none; /* Controlled cleanly by JS mid-flash */
+    display: none; 
     width: 480px;
     max-width: 100%;
     z-index: 10;
@@ -184,11 +186,13 @@ body {
    3. Wedding Details Section
    ========================================================================== */
 .details-section {
-    display: none; /* Kept invisible until animation hook fires */
+    display: none; 
     width: 100%;
+    box-sizing: border-box;
+    padding: 0 15px; /* Prevents contents from touching mobile screen edges */
     margin-top: 20px;
     
-    /* Enabled Flexbox to force child items to stack perfectly center */
+    /* Forces ALL items in the detail view to stay perfectly stacked down the center */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -196,7 +200,7 @@ body {
 }
 
 .details-section.visible {
-    display: flex; /* Changed to flex to honor alignment configurations */
+    display: flex; /* Flex layout forces everything to honor the centering properties */
     animation: fadeInUp 0.8s ease forwards;
 }
 
@@ -213,7 +217,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* Cleaned date alignment container */
 .date-row {
     display: flex;
     font-family: "Quintessential", serif;
@@ -225,6 +228,7 @@ body {
     color: #e5dee2;
     margin-top: 70px;
     margin-bottom: 40px;
+    width: 100%;
 }
 
 .bar img, .place img {
@@ -290,14 +294,16 @@ body {
 .countdown-container {
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain; /* Prevents frame cropping */
-    background-image: url(frame2.png);
+    background-size: contain; 
+    background-image: url(../pics/frame2.png);
     
-    width: 380px; /* Keeps frame proportionally shaped */
-    height: 420px; /* Vertical room inside the frame */
+    /* Responsive sizing rules for mobile */
+    max-width: 380px; 
+    width: 100%;      /* Lets it shrink smoothly on narrow screens */
+    height: 420px;    
     
-    /* Horizontal Page Centering & Flex Layout inside Frame */
-    margin: 40px auto 0 auto;
+    /* Forces layout engine to find the exact global center of screens */
+    margin: 40px auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -319,7 +325,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px; /* Reduced to bring the number groups closer together */
+    gap: 8px; 
     width: 100%;
 }
 
@@ -332,7 +338,7 @@ body {
 }
 
 .countdown-box span {
-    font-size: 18px; /* Kept small size */
+    font-size: 18px; 
     font-weight: bold;
     color: #800020;
     line-height: 1.1;
