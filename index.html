@@ -4,25 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sama & Alaa</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Petit+Formal+Script&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mea+Culpa&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="sama.css">
-    <meta property="og:title" content="Alaa & Sama" />
+    <link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mea+Culpa&display=swap" rel="stylesheet">
     
-    <meta property="og:description" content="يسرّنا دعوتكم لمشاركتنا فرحة خطوبتنا
-        وجودكم يسعدنا ويزيد يومنا جمالًا" />
+    <link rel="stylesheet" href="sama.css">
+    
+    <meta property="og:title" content="دعوة خطوبة علاء & سما 🤍" />
+    
+    <meta property="og:description" content="يسرّنا دعوتكم لمشاركتنا فرحة خطوبتنا، وجودكم يسعدنا ويزيد يومنا جمالًا ✨" />
     
     <meta property="og:image" content="https://hero24085-ui.github.io/Alaa-Sama/logo1.jpg" />
     
@@ -34,16 +30,14 @@
 </head>
 <body>
     <audio autoplay loop id="bg-audio">
-  <source src="bgmusic.mp3" type="audio/mpeg">
-</audio>
+        <source src="bgmusic.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="flash-overlay" id="flashOverlay"></div>
-    <div class="logo"><img src="logo1.png" alt=""></div>
+    <div class="logo"><img src="logo1.jpg" alt="Logo"></div>
 
     <div class="head fade-item">Alaa & Sama</div>
-    
     <div class="subhead fade-item">Are getting engaged!</div>
-    
     
     <div class="env-container fade-item">
         <div class="interactive-wrapper" id="interactiveWrapper">
@@ -52,7 +46,6 @@
                 <img src="ll.png" alt="envelope" class="envelope-img">
                 <div class="open-text">Click to Open....</div>
             </div>
-            
             
             <div class="video-box" id="videoBox">
                 <video id="invitationVideo" playsinline muted>
@@ -94,7 +87,6 @@
                             <div class="label">Seconds</div>
                         </div>
                     </div>
-                    
                 </div>
 
             </div>
@@ -102,21 +94,20 @@
         </div>
     </div>
     
-    
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-    const envelope = document.querySelector(".envelope-box");
-    const audio = document.getElementById("bg-audio");
+            const envelope = document.querySelector(".envelope-box");
+            const audio = document.getElementById("bg-audio");
 
-    if (envelope && audio) {
-        envelope.addEventListener("click", () => {
-            // Unlocks and plays audio on mobile browsers upon user interaction
-            audio.play().catch(error => {
-                console.log("Audio playback behavior blocked or handled:", error);
-            });
+            if (envelope && audio) {
+                envelope.addEventListener("click", () => {
+                    audio.play().catch(error => {
+                        console.log("Audio playback behavior blocked or handled:", error);
+                    });
+                });
+            }
         });
-    }
-});
+
         const envelopeBox = document.getElementById('envelopeBox');
         const videoBox = document.getElementById('videoBox');
         const invitationVideo = document.getElementById('invitationVideo');
@@ -126,35 +117,28 @@
         const subheadElement = document.querySelector('.subhead');
 
         envelopeBox.addEventListener('click', function() {
-            // 1. Trigger the screen-wide flash transition
             flashOverlay.classList.add('flash-active');
 
-            // 2. Mid-flash swap (250ms) - execute while view is obscured
             setTimeout(() => {
-                envelopeBox.style.display = 'none'; // Completely hide static image
-                videoBox.style.display = 'block';   // Reveal video structural frame
+                envelopeBox.style.display = 'none';
+                videoBox.style.display = 'block';
                 
-                // Hide the heading and subheading immediately
                 if (headElement) headElement.style.display = 'none';
                 if (subheadElement) subheadElement.style.display = 'none';
                 
-                // Play video file seamlessly
                 invitationVideo.play().catch(error => {
                     console.log("Video autoplay fluid block intercepted: ", error);
                 });
 
-                // Show the rest of your page information below
                 detailsSection.classList.add('visible');
-                document.body.style.overflowY = 'auto'; // Unlock site scrolling
+                document.body.style.overflowY = 'auto';
             }, 250);
 
-            // 3. Dissipate flash screen
             setTimeout(() => {
                 flashOverlay.classList.remove('flash-active');
             }, 700);
         });
 
-        // Scroll reveal controller for page elements
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -168,7 +152,6 @@
 
         // --- Countdown Timer Logic ---
         function updateCountdown() {
-            // Set targeted Wedding Date (June 8, 2026 at 8:00 PM)
             const weddingDate = new Date('June 8, 2026 20:00:00').getTime();
             const now = new Date().getTime();
             const gap = weddingDate - now;
@@ -178,7 +161,6 @@
                 return;
             }
 
-            // Time math conversions
             const second = 1000;
             const minute = second * 60;
             const hour = minute * 60;
@@ -189,14 +171,12 @@
             const m = Math.floor((gap % hour) / minute);
             const s = Math.floor((gap % minute) / second);
 
-            // Print numbers with leading zeroes
             document.getElementById('days').innerText = d < 10 ? '0' + d : d;
             document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
             document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
             document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
         }
 
-        // Run counting loop every single second
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
